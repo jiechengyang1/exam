@@ -68,3 +68,5 @@ npm run serve #启动项目服务
 `2.使用IDEA进入当前项目的exam-exam目录下`
 
 > 使用项目sql目录下的sql文件进行导入，然后使用maven导入依赖，启动项目，后台即可运行起来
+
+系统展示  **https://blog.csdn.net/jie201821100/article/details/123184242?spm=1001.2014.3001.5502**
