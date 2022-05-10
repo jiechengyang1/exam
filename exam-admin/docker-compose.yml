@@ -1,0 +1,32 @@
+version: 1.0.0
+services:
+  exam:
+    container_name: exam_server
+    build: .
+    ports:
+      - 8888:8888
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    container_name: exam_mysql
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=wzz233
+    privileged: true
+    volumes:
+      - /opt/exam/volume_data/mysql/data:/var/lib/mysql
+      - /opt/exam/volume_data/mysql/conf:/etc/mysql/conf.d
+      - /opt/exam/init_sql:/docker-entrypoint-initdb.d
+  redis:
+    container_name: exam_redis
+    image: redis:6
+    command: redis-server /etc/redis/redis.conf --requirepass wzz233
+    privileged: true
+    ports:
+      - 6379:6379
+    volumes:
+      - /opt/exam/volume_data/redis/data:/data
+      - /opt/exam/volume_data/redis/redis.conf:/etc/redis/redis.conf
